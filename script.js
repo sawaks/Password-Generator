@@ -1,17 +1,20 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+var lowerLetters = "abcdefghijklmnopqrstuvwxyz";
+var upperLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var numbers = "0123456789";
+var specialCharacters = "@%+\/'!#$^?:.(){}[]~-_";
+
 function generatePassword(){
-  var lowerLetters = "abcdefghijklmnopqrstuvwxyz";
-  var upperLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  var numbers = "0123456789";
-  var specialCharacters = "@%+\/'!#$^?:.(){}[]~-_";
+
   var sourceOfPassward = "";
   let result = "";
   var minLength = 8;
   var maxLength = 128;
   var confirmLength = Number(window.prompt("How many characters do you want contain for your password? ", "enter number"));
 
+ 
   if (confirmLength >= minLength && confirmLength <= maxLength) {
     var confirmSpecial = confirm("Can you click OK to confirm including special characters? ");
     var confirmNumeric = confirm("Can you click OK to confirm including numeric characters?");
@@ -38,13 +41,13 @@ function generatePassword(){
     
 
     if (confirmSpecial === false && confirmNumeric=== false && confirmLower=== false && confirmUpper === false){
-        alert("You should select at least one character type!")
-        return passwordText.value = '';
+        alert("You should select at least one character type!")  
+        return;
       }
 
     if (confirmPassword === true){
         for (let i = 0; i < confirmLength; i++) {
-        result +=  sourceOfPassward[(Math.floor(Math.random() * sourceOfPassward.length))];
+        var generateResult = result +=  sourceOfPassward[(Math.floor(Math.random() * sourceOfPassward.length))];
         }
       } else {
         alert("After OK, please click 'Generate Password' again!")
@@ -55,7 +58,7 @@ function generatePassword(){
       alert("Press number more than at least 8 and less than 128.")
       
     }
-  return result;
+  return generateResult;
 }
 
 // Write password to the #password input
